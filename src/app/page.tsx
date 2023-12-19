@@ -41,7 +41,6 @@ export default function Home() {
           </section>
       </div>
 
-      {/* <Sidebar/> */}
     </div>
   )
 }
