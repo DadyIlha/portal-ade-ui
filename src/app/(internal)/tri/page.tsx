@@ -2,7 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod"
 import { range } from "lodash"
-import Link from "next/link"
+import { useEffect } from "react"
 import { SubmitHandler, useForm } from "react-hook-form"
 import * as z from "zod"
 
@@ -12,7 +12,6 @@ import {
   FormControl,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "@/components/ui/form"
 import {
@@ -23,6 +22,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { Separator } from "@/components/ui/separator"
+import { api } from "@/services/api"
 
 const applicationOptions = ["SAEB Aplicação", "Primeira Aplicação"]
 const schoolYearOptions = ["5º ano regular", "9º ano regular"]
@@ -61,12 +61,16 @@ export default function TriPage() {
   }
 
   return (
-    <div className="flex flex-col gap-4 p-20 pt-80">
-      <h1 className="text-3xl font-bold">Teoria de resposta ao item</h1>
+    <div className="flex flex-col gap-4">
+      <h1 className="text-3xl font-bold text-cyan-700">
+        Teoria de resposta ao item
+      </h1>
 
       <Separator />
 
-      <p>Selecione o ano da aplicação para obter o relatório</p>
+      <p className="text-slate-600">
+        Selecione o ano da aplicação para obter o relatório
+      </p>
 
       <Form {...form}>
         <form
@@ -168,7 +172,7 @@ export default function TriPage() {
 
           {!!applicationYear && !!application && !!schoolYear && (
             <Button variant="outline" type="submit">
-              Abrir
+              Salvar
             </Button>
           )}
         </form>
