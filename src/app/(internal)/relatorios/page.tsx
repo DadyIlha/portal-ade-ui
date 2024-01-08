@@ -87,7 +87,6 @@ const columns: ColumnDef<Relatorio>[] = [
 
 export default function Reports() {
   const [users, setUsers] = useState<Relatorio[]>([])
-
   useEffect(() => {
     // api.get("/users").then(({ data }) => {
     //   setUsers(data)
