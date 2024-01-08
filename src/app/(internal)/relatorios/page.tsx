@@ -8,13 +8,19 @@ import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { DataTable } from "@/components/ui/data-table"
 import { Separator } from "@/components/ui/separator"
-import { GetLogs} from "@/services/api"
 
+import { GetLogs } from "@/services/api"
 
+interface Report {
+  Nome: string
+  Grupo: "Usuário - Acesso Total" | "Usuário - Acesso Parcial" | "Administrador"
+  QtdAcesso: number
+  UltimoAcesso: string
+}
 
 const iconClassName = "h-4 w-4"
 
-const columns: ColumnDef<Relatorio>[] = [
+const columns: ColumnDef<Report>[] = [
   {
     accessorKey: "Nome",
     header: ({ column }) => {
@@ -88,10 +94,9 @@ const columns: ColumnDef<Relatorio>[] = [
 export default function Reports() {
   const [users, setUsers] = useState<Relatorio[]>([])
   useEffect(() => {
-    // api.get("/users").then(({ data }) => {
-    //   setUsers(data)
-    // })
-    GetLogs(1, 1000).then(r => setUsers(r.result));
+    api.get("/users").then(({ data }) => {
+      setUsers(data)
+    })
   }, [])
 
   return (
