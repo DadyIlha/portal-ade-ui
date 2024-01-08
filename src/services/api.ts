@@ -41,4 +41,4 @@ export const api = axios.create({
   baseURL: "http://localhost:5000/seducpa",
 })
 
-export { GetToken, GetLogs }
+export { GetLogs,GetToken }

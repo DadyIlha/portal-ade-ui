@@ -8,7 +8,7 @@ import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { DataTable } from "@/components/ui/data-table"
 import { Separator } from "@/components/ui/separator"
-import { GetLogs, GetToken, api } from "@/services/api"
+import { GetLogs} from "@/services/api"
 
 
 
