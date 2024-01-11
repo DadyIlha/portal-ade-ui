@@ -9,6 +9,8 @@ import { Button } from "@/components/ui/button"
 import { DataTable } from "@/components/ui/data-table"
 import { Separator } from "@/components/ui/separator"
 import { GetLogs} from "@/services/api"
+import { getReportToken } from "@/services/powerBiEmbededApi"
+// import { getAccessToken } from "@/services/powerBiApi"
 
 
 
@@ -91,6 +93,7 @@ export default function Reports() {
     // api.get("/users").then(({ data }) => {
     //   setUsers(data)
     // })
+    getReportToken().then(result => console.log(result));
     GetLogs(1, 1000).then(r => setUsers(r.result));
   }, [])
 
