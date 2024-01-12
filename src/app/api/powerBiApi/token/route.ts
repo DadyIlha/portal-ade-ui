@@ -9,7 +9,7 @@ export async function POST(req: NextRequest) {
     var clientId: string = body.clientId;
     var groupId: string = body.groupId;
     var reportId: string = body.reportId;
-    var token: string = (await axios.post(`${process.env.NEXT_PUBLIC_LOCALAPIBASEURL}/powerBiApi/accessToken`, {
+    var token: string = (await axios.post(`${req.nextUrl.protocol}//${req.nextUrl.host}/api/powerBiApi/accessToken`, {
         client_id: clientId
     })).data;
     var url: string = `https://api.powerbi.com/v1.0/myorg/groups/${groupId}/reports/${reportId}/GenerateToken`;
