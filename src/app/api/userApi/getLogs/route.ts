@@ -7,14 +7,14 @@ export async function GET(req: NextRequest) {
     const pageNumber =  parseInt(req.nextUrl.searchParams.get("pageNumber") as string);
     const pageSize =  parseInt(req.nextUrl.searchParams.get("pageSize") as string);
     const headers = {
-        "Authorization": `Bearer ${(await axios.post(`${process.env.NEXT_PUBLIC_LOCALAPI_PROTOCOL}://${process.env.NEXT_PUBLIC_LOCALAPI_URL}:${process.env.NEXT_PUBLIC_LOCALAPI_PORT}/api/userApi/getToken`, {
-            "clientId": process.env.NEXT_PUBLIC_CLIENT_ID,
-            "apiKey": process.env.NEXT_PUBLIC_API_KEY
+        "Authorization": `Bearer ${(await axios.post(`${process.env.LOCALAPI_PROTOCOL}://${process.env.LOCALAPI_URL}:${process.env.LOCALAPI_PORT}/api/userApi/getToken`, {
+            "clientId": process.env.CLIENT_ID,
+            "apiKey": process.env.API_KEY
         })).data}`,
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Headers': '*',
     };
-    const results: Relatorios = (await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/${process.env.NEXT_PUBLIC_DATABASE}/users/GetLogsPaged`,
+    const results: Relatorios = (await axios.get(`${process.env.API_BASE_URL}/${process.env.DATABASE}/users/GetLogsPaged`,
         {
             headers: headers,
             params: {

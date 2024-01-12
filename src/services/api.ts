@@ -2,24 +2,9 @@ import axios from "axios";
 import { he } from "date-fns/locale";
 
 
-async function GetToken() {
-  return (await axios.post(process.env.NEXT_PUBLIC_BASE_URL + "/" + process.env.NEXT_PUBLIC_DATABASE + "/users/login",
-    {
-      "clientId": process.env.NEXT_PUBLIC_CLIENT_ID,
-      "apiKey": process.env.NEXT_PUBLIC_API_KEY
-    },
-    {
-      headers: {
-        "Content-Type": "application/json",
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Headers': '*',
-      }
-    }
-  )).data?.token;
-}
 
 async function GetLogs(pageNumber: number, pageSize: number): Promise<Relatorios> {
-  const results = (await axios.get(`${process.env.NEXT_PUBLIC_LOCALAPI_PROTOCOL}://${process.env.NEXT_PUBLIC_LOCALAPI_URL}:${process.env.NEXT_PUBLIC_LOCALAPI_PORT}/api/userApi/getLogs`
+  const results = (await axios.get(`/api/userApi/getLogs`
   ,{
     params: {
       pageNumber,
@@ -33,4 +18,4 @@ export const api = axios.create({
   baseURL: "http://localhost:5000/seducpa",
 })
 
-export { GetLogs,GetToken }
+export { GetLogs }
