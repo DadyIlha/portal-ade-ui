@@ -5,14 +5,14 @@ import { Route } from "lucide-react";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
-    var url: string = process.env.NEXT_PUBLIC_BI_AUTH0_URL!;
+    var url: string = process.env.BI_AUTH0_URL!;
     var body = {
         grant_type: "password",
         scope: "openid",
         resource: "https://analysis.windows.net/powerbi/api",
         client_id: (await req.json())?.client_id,
-        username: process.env.NEXT_PUBLIC_BI_USUARIO,
-        password: process.env.NEXT_PUBLIC_BI_SENHA,
+        username: process.env.BI_USUARIO,
+        password: process.env.BI_SENHA,
     };
     var headers = {
         "Content-Type": "application/x-www-form-urlencoded"
