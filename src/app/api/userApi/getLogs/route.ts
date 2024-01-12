@@ -7,7 +7,7 @@ export async function GET(req: NextRequest) {
     const pageNumber =  parseInt(req.nextUrl.searchParams.get("pageNumber") as string);
     const pageSize =  parseInt(req.nextUrl.searchParams.get("pageSize") as string);
     const headers = {
-        "Authorization": `Bearer ${(await axios.post(`${process.env.NEXT_PUBLIC_LOCALAPI_PROTOCOL}//${process.env.NEXT_PUBLIC_LOCALAPI_URL}:${process.env.NEXT_PUBLIC_LOCALAPI_PORT}/api/userApi/getToken`, {
+        "Authorization": `Bearer ${(await axios.post(`${process.env.NEXT_PUBLIC_LOCALAPI_PROTOCOL}://${process.env.NEXT_PUBLIC_LOCALAPI_URL}:${process.env.NEXT_PUBLIC_LOCALAPI_PORT}/api/userApi/getToken`, {
             "clientId": process.env.NEXT_PUBLIC_CLIENT_ID,
             "apiKey": process.env.NEXT_PUBLIC_API_KEY
         })).data}`,
