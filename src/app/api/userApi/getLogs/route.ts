@@ -14,8 +14,7 @@ export async function GET(req: NextRequest) {
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Headers': '*',
     };
-    const results: Relatorios = (await axios.get(`
-        ${process.env.NEXT_PUBLIC_BASE_URL}/${process.env.NEXT_PUBLIC_DATABASE}/users/GetLogsPaged`,
+    const results: Relatorios = (await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/${process.env.NEXT_PUBLIC_DATABASE}/users/GetLogsPaged`,
         {
             headers: headers,
             params: {
