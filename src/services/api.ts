@@ -19,7 +19,7 @@ async function GetToken() {
 }
 
 async function GetLogs(pageNumber: number, pageSize: number): Promise<Relatorios> {
-  const results = (await axios.get(`${process.env.NEXT_PUBLIC_LOCALAPIBASEURL}/userApi/getLogs`
+  const results = (await axios.get("api/userApi/getLogs"
   ,{
     params: {
       pageNumber,
