@@ -10,7 +10,7 @@ export async function POST(req: NextRequest) {
         grant_type: "password",
         scope: "openid",
         resource: "https://analysis.windows.net/powerbi/api",
-        client_id: (await req.json())?.client_id,
+        client_id: process.env.APPLICATION_ID,
         username: process.env.BI_USUARIO,
         password: process.env.BI_SENHA,
     };

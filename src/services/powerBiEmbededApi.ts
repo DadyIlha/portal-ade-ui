@@ -1,5 +1,9 @@
 import axios from "axios";
 
 export async function getReportToken() {
-    return (await axios.post(`/api/powerBiApi/token`)).data;
+    var token: string = (await axios.post(`/api/powerBiApi/accessToken`)).data;
+
+    return (await axios.post(`/api/powerBiApi/token`, {
+        token : token
+    }))?.data.token;
 }
