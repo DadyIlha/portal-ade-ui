@@ -1,10 +1,9 @@
 
 import axios from "axios";
 import { Route } from "lucide-react";
-
 // import type { NextApiRequest, NextApiResponse } from 'next';
 import { NextRequest, NextResponse } from "next/server";
- 
+
 export async function POST(req: NextRequest) {
     var url: string = process.env.NEXT_PUBLIC_BI_AUTH0_URL!;
     var body = {

@@ -19,21 +19,13 @@ async function GetToken() {
 }
 
 async function GetLogs(pageNumber: number, pageSize: number): Promise<Relatorios> {
-  const headers = {
-    "Authorization": `Bearer ${await GetToken()}`,
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Headers': '*',
-  };
-  const results: Relatorios = (await axios.get(`
-      ${process.env.NEXT_PUBLIC_BASE_URL}/${process.env.NEXT_PUBLIC_DATABASE}/users/GetLogsPaged`,
-    {
-      headers: headers,
-      params: {
-        pageNumber,
-        pageSize
-      }
+  const results = (await axios.get(`${process.env.NEXT_PUBLIC_LOCALAPIBASEURL}/userApi/getLogs`
+  ,{
+    params: {
+      pageNumber,
+      pageSize
     }
-  ))?.data;
+  })).data
   return results;
 }
 
