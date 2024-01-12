@@ -88,12 +88,13 @@ const columns: ColumnDef<Relatorio>[] = [
 ]
 
 export default function Reports() {
-  const [users, setUsers] = useState<Relatorio[]>([])
+  const [users, setUsers] = useState<Relatorio[]>([]);
+  const [token, setToken] = useState("");
   useEffect(() => {
     // api.get("/users").then(({ data }) => {
     //   setUsers(data)
     // })
-    getReportToken().then(result => console.log(result));
+    getReportToken().then(result => setToken(result));
     GetLogs(1, 1000).then(r => setUsers(r.result));
   }, [])
 
@@ -108,10 +109,14 @@ export default function Reports() {
           partir da data 03/03/2022.
         </p>
       </div>
+      
 
       <Separator />
 
       <DataTable columns={columns} data={users} />
+      <div>
+        {token}
+      </div>
     </div>
   )
 }
