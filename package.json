@@ -26,6 +26,8 @@
     "lucide-react": "^0.302.0",
     "next": "14.0.4",
     "phosphor-icons": "^1.4.2",
+    "powerbi-client": "^2.22.3",
+    "powerbi-client-react": "^1.4.0",
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.49.2",
