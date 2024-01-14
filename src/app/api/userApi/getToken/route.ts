@@ -8,6 +8,7 @@ export async function POST(req: NextRequest) {
       "apiKey": process.env.API_KEY
     },
     {
+      timeout: 60000,
       headers: {
         "Content-Type": "application/json",
         'Access-Control-Allow-Origin': '*',
