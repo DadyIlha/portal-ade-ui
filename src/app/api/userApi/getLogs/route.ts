@@ -16,6 +16,7 @@ export async function GET(req: NextRequest) {
     };
     const results: Relatorios = (await axios.get(`${process.env.API_BASE_URL}/${process.env.DATABASE}/users/GetLogsPaged`,
         {
+            timeout: 60000,
             headers: headers,
             params: {
                 pageNumber : pageNumber,
