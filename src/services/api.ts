@@ -6,6 +6,7 @@ import { he } from "date-fns/locale";
 async function GetLogs(pageNumber: number, pageSize: number): Promise<Relatorios> {
   const results = (await axios.get(`/api/userApi/getLogs`
   ,{
+    timeout: 70000,
     params: {
       pageNumber,
       pageSize
