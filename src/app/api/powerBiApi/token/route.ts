@@ -7,8 +7,8 @@ import { NextRequest, NextResponse } from "next/server";
 export async function POST(req: NextRequest) {
     var body = {
         "clientId": process.env.APPLICATION_ID,
-        "groupId": process.env.SEMED_DADOSGERAIS_GROUP_ID,
-        "reportId": process.env.SEMED_DADOSGERAIS_REPORT_ID
+        "groupId": process.env.NEXT_PUBLIC_SEMED_DADOSGERAIS_GROUP_ID,
+        "reportId": process.env.NEXT_PUBLIC_SEMED_DADOSGERAIS_REPORT_ID
     }
     // var bodyReq = await req.json();
     var clientId: string | undefined = body.clientId;
