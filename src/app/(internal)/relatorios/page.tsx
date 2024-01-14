@@ -94,7 +94,7 @@ export default function Reports() {
     // api.get("/users").then(({ data }) => {
     //   setUsers(data)
     // })
-    getReportToken().then(result => setToken(result));
+    // getReportToken().then(result => setToken(result));
     GetLogs(1, 1000).then(r => setUsers(r.result));
   }, [])
 
