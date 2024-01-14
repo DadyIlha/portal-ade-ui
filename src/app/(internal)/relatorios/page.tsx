@@ -114,9 +114,6 @@ export default function Reports() {
       <Separator />
 
       <DataTable columns={columns} data={users} />
-      <div>
-        {token}
-      </div>
     </div>
   )
 }
