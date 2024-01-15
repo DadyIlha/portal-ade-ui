@@ -15,8 +15,5 @@ async function GetLogs(pageNumber: number, pageSize: number): Promise<Relatorios
   return results;
 }
 
-export const api = axios.create({
-  baseURL: "http://localhost:5000/seducpa",
-})
 
 export { GetLogs }
