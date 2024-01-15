@@ -22,7 +22,6 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { Separator } from "@/components/ui/separator"
-import { api } from "@/services/api"
 
 const applicationOptions = ["SAEB Aplicação", "Primeira Aplicação"]
 const schoolYearOptions = ["5º ano regular", "9º ano regular"]
