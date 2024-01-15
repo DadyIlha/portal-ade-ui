@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 import "./powerbi.css";
 
 import { models } from 'powerbi-client';
