@@ -1,6 +1,33 @@
+"use client"
 import Image from "next/image"
+import { redirect, useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
+import { useState } from "react"
 
-export default async function Home() {
+import { Login } from "@/services/api"
+
+import { UserLogin } from "./interfaces/UserLogin";
+
+export default function Home() {
+  const router = useRouter();
+  const [userName, setUserName] = useState("");
+  const [userPassword, setUserPassword] = useState("");
+  // const { data: session } = useSession({
+  //   required: true,
+  //   onUnauthenticated() {
+  //     redirect("/");
+  //   }
+  // });
+  function login(username: string, password: string) {
+    Login(username, password).then(u => {
+      if (u) {
+
+        router.push("/home");
+      }
+    }).catch();
+  }
+
+
   return (
     <div className="flex ">
       <Image
@@ -38,10 +65,12 @@ export default async function Home() {
               </label>
               <input
                 className="--font-roboto mt-1 block w-full rounded-md border border-slate-300 bg-white px-3 py-3 placeholder-slate-400 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm"
-                type="email"
+                type="text"
                 id="email"
+                value={userName}
                 name="email"
                 placeholder="contato@email.com"
+                onChange={(e) => setUserName(e.target.value)}
               />
             </div>
             <div className="block pt-5">
@@ -53,15 +82,20 @@ export default async function Home() {
               </label>
               <input
                 className="--font-roboto mt-1 block w-full rounded-md border border-slate-300 bg-white px-3 py-3 placeholder-slate-400 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm"
-                type="senha"
+                type="password"
                 id="key"
                 placeholder="*******"
+                value={userPassword}
+                onChange={(e) => setUserPassword(e.target.value)}
               />
               <span className="border-b-2 border-slate-300 text-xs text-slate-400 hover:border-cyan-600 hover:text-cyan-600">
                 <a href="/">esqueci minha senha</a>
               </span>
             </div>
-            <button className="focus:ring- --font-roboto relative top-2 mt-5 block w-2/3 rounded-md border border-slate-300 bg-white px-2 py-3 font-medium text-slate-400 placeholder-slate-400 shadow-sm hover:border-sky-500 hover:text-sky-800 hover:ring-sky-500 focus:outline-none sm:text-base">
+            <button className="focus:ring- --font-roboto relative top-2 mt-5 block w-2/3 rounded-md border border-slate-300 bg-white px-2 py-3 font-medium text-slate-400 placeholder-slate-400 shadow-sm hover:border-sky-500 hover:text-sky-800 hover:ring-sky-500 focus:outline-none sm:text-base"
+              onClick={() => login(userName, userPassword)}
+              formAction={() => null}
+            >
               Acessar
             </button>
           </form>
