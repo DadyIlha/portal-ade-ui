@@ -8,7 +8,9 @@ import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { DataTable } from "@/components/ui/data-table"
 import { Separator } from "@/components/ui/separator"
-import { GetLogs, GetToken, api } from "@/services/api"
+import { GetLogs} from "@/services/api"
+import { getReportToken } from "@/services/powerBiEmbededApi"
+// import { getAccessToken } from "@/services/powerBiApi"
 
 
 
@@ -86,11 +88,13 @@ const columns: ColumnDef<Relatorio>[] = [
 ]
 
 export default function Reports() {
-  const [users, setUsers] = useState<Relatorio[]>([])
+  const [users, setUsers] = useState<Relatorio[]>([]);
+  const [token, setToken] = useState("");
   useEffect(() => {
     // api.get("/users").then(({ data }) => {
     //   setUsers(data)
     // })
+    // getReportToken().then(result => setToken(result));
     GetLogs(1, 1000).then(r => setUsers(r.result));
   }, [])
 
@@ -105,6 +109,7 @@ export default function Reports() {
           partir da data 03/03/2022.
         </p>
       </div>
+      
 
       <Separator />
 
