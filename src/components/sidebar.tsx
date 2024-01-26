@@ -10,6 +10,7 @@ import {
   SignOut,
 } from "@phosphor-icons/react"
 import Image from "next/image"
+import { useRouter } from "next/navigation"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -23,6 +24,7 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer"
 import { cn } from "@/lib/utils"
+import { handleLogout } from "@/services/api"
 
 const links = [
   {
@@ -66,6 +68,7 @@ const footerLinks = [
 ]
 
 export function Sidebar() {
+  const router = useRouter()
   return (
     <>
       <div className="flex w-full lg:hidden">
@@ -156,6 +159,12 @@ export function Sidebar() {
                     <li
                       key={label}
                       className="flex items-center gap-4 pb-5 text-cyan-500 duration-200 last-of-type:text-red-500 hover:text-cyan-700 hover:last-of-type:text-red-700"
+                      onClick={() => {
+                        if (label === "Sair") {
+                          handleLogout()
+                          router.push("/")
+                        }
+                      }}
                     >
                       <Icon size={35} />
                       <a

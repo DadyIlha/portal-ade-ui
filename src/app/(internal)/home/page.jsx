@@ -1,29 +1,41 @@
-"use client";
-// import "./powerbi.css";
-// import {dynamic} from "react";
-import dynamic from 'next/dynamic'
-import { useEffect, useState } from 'react';
+"use client"
 
-import {getReportToken} from "@/services/powerBiEmbededApi";
+import dynamic from "next/dynamic"
+import { useEffect, useRef, useState } from "react"
 
- const PowerBIEmbed = dynamic(() => import("@/components/ui/report"), {
+import { getReportToken } from "@/services/powerBiEmbededApi"
+
+const PowerBIEmbed = dynamic(() => import("@/components/ui/report"), {
   ssr: false,
-  loading: () => <p>Loading...</p>
- });
-
-
+  loading: () => <p>Loading...</p>,
+})
 
 export default function Home() {
-  
-  const [token, setToken] = useState('');
-  // const [report, setReport] = useState<Report>();
+  const [token, setToken] = useState("")
+
   useEffect(() => {
-    const GetToken = async () => { setToken(await getReportToken()); };
-    GetToken();
-  }, []);
+    const getToken = async () => {
+      setToken(await getReportToken())
+    }
+    getToken()
+  }, [])
+
+  function requestFullscreen() {
+    const fullscreen = document.fullscreenElement
+    const p = document.getElementById("pbi")
+    if (!fullscreen) {
+      p.requestFullscreen()
+    }
+    p.exitFullscreen()
+  }
+
+  const pbi = useRef(null)
   return (
-    <div>
+    <div id="pbi" ref={pbi}>
       {<PowerBIEmbed token={token} />}
+      <button id="myLink" onClick={() => requestFullscreen()}>
+        Fullscreen
+      </button>
     </div>
-  );
+  )
 }

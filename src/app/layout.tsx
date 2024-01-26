@@ -3,6 +3,9 @@ import "./globals.css"
 import type { Metadata } from "next"
 import { Poppins, Roboto } from "next/font/google"
 
+import { Toaster } from "@/components/ui/sonner"
+import { ReduxProvider } from "@/redux/store/provider"
+
 const roboto = Roboto({
   weight: ["400", "500", "700"],
   subsets: ["latin"],
@@ -30,7 +33,8 @@ export default function RootLayout({
   return (
     <html lang="pt br">
       <body className={`${poppins.className} ${roboto.className}`}>
-        {children}
+        <ReduxProvider>{children}</ReduxProvider>
+        <Toaster />
       </body>
     </html>
   )

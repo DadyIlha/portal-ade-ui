@@ -1,4 +1,6 @@
+
 .reportClass{
-    height: 728px;
-    width: 900px;
+    display: flex;
+    width: 1024px;
+    height: 576px;
 }
